@@ -2,13 +2,10 @@ package ru.netology.test;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
-import com.github.javafaker.CreditCardType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import com.github.javafaker.Faker;
 import ru.netology.data.CardDeliveryInfo;
 import ru.netology.data.DataGenerator;
-
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.$;
@@ -16,9 +13,7 @@ import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selectors.withText;
 import org.openqa.selenium.Keys;
 
-public class TestWithFaker {
-
-    private static  Faker faker;
+class TestWithFaker {
 
     @BeforeEach
     void openUrl() {
@@ -27,7 +22,7 @@ public class TestWithFaker {
     }
 
     @Test
-    void shouldGenerateTestDataUsingUtils(){
+    void shouldGenerateTestData(){
         String date = DataGenerator.generateDate(5);
         CardDeliveryInfo cardDeliveryInfo = DataGenerator.generateInfo("ru",5);
         $("[data-test-id=city] input").setValue(cardDeliveryInfo.getCity());
