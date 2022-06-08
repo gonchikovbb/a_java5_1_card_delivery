@@ -24,8 +24,6 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.24'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
 
-    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
-    testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.36'
 }
 
 test {
