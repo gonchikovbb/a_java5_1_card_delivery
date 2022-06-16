@@ -2,7 +2,12 @@ package ru.netology.test;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.*;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.netology.data.CardDeliveryInfo;
 import ru.netology.data.DataGenerator;
@@ -15,12 +20,27 @@ import org.openqa.selenium.Keys;
 
 class TestWithFaker {
 
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
+
     @BeforeEach
     void openUrl() {
         Configuration.holdBrowserOpen = true;
         open ("http://localhost:9999/");
     }
 
+    @Epic(value = "Банк")
+    @Feature(value = "Функционал карт")
+    @Story(value = "Юзер стори 1")
+    @Description(value = "Тестируетсе фэйкер")
+    @Link(name = "ссылка на кейс", value = "https://github.com/gonchikovbb/a_java5_1_card_delivery" )
     @Test
     void shouldGenerateTestData(){
         String date = DataGenerator.generateDate(5);

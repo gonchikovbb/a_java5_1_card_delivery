@@ -1,12 +1,21 @@
 plugins {
+    id 'io.qameta.allure' version '2.9.6'
     id 'java'
 }
 
 group 'ru.netology'
 version '1.0-SNAPSHOT'
 
+sourceCompatibility = 11
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
+
+allure {
+    version = '2.18.1'
+    useJUnit5 {
+        version = '2.18.1'
+    }
+}
 
 repositories {
     mavenCentral()
@@ -15,7 +24,8 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
-    testImplementation 'com.codeborne:selenide:6.4.0'
+    testImplementation 'com.codeborne:selenide:6.6.1'
+    testImplementation 'io.qameta.allure:allure-selenide:2.18.1'
     implementation 'com.github.javafaker:javafaker:1.0.2'
 
     compileOnly 'org.projectlombok:lombok:1.18.24'
